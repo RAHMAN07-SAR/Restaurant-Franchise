@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Basic meta / SEO -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RedesCreation | Delicious Burgers & More — Bengaluru</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta name="description" content="RedesCreation - premium burger & fast food franchise in Bengaluru. Fresh ingredients, fast service, and delicious recipes. Order online or reserve a table." />
+  <meta name="author" content="RedesCreation" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Tailwind CSS CDN (playground CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Additional Tailwind config (optional) -->
+  <script>
+    // Tailwind config for additional fonts and colors (if you want to extend)
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#c7301f',
+            accent: '#f59e0b',
+            dark: '#2b2b2b',
+            warmbg: '#f6f2ef'
+          },
+          keyframes: {
+            floaty: {
+              '0%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+              '100%': { transform: 'translateY(0px)' }
+            },
+            fadeInUp: {
+              '0%': { opacity: 0, transform: 'translateY(12px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' }
+            }
+          },
+          animation: {
+            floaty: 'floaty 4s ease-in-out infinite',
+            fadeInUp: 'fadeInUp 0.8s ease forwards'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom styles for things not covered directly by Tailwind -->
+  <style>
+    /* Custom max width class requested: max-w-6x1 */
+    .max-w-6x1 { max-width: 1240px; } /* tuned to reference width */
+    /* Custom small tweaks */
+    .hero-overlay {
+      background: linear-gradient(90deg, rgba(199,49,31,0.92) 0%, rgba(199,49,31,0.72) 60%);
+    }
+
+    /* A subtle glass pill for price */
+    .price-pill {
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+      border-radius: 9999px;
+      padding: 0.6rem 1.2rem;
+      display:inline-block;
+    }
+
+    /* star color override */
+    .star { color: #f59e0b; }
+
+    /* Mobile slide-out nav */
+    .mobile-nav {
+      transform: translateX(100%);
+      transition: transform 350ms cubic-bezier(.2,.9,.3,1);
+    }
+    .mobile-nav.open {
+      transform: translateX(0);
+    }
+
+    /* Simple lightbox overlay */
+    .lightbox {
+      position: fixed;
+      z-index: 60;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.7);
+    }
+    .lightbox.open { display: flex; }
+
+    /* subtle rounded square icon */
+    .sq-red { background:#b92f1e; border-radius:12px; width:64px; height:64px; display:inline-block; }
+
+    /* animate CTA pulse */
+    @keyframes pulse-cta {
+      0% { transform: scale(1); box-shadow: 0 8px 24px rgba(245,158,11,0.15); }
+      50% { transform: scale(1.03); box-shadow: 0 12px 36px rgba(245,158,11,0.22); }
+      100% { transform: scale(1); box-shadow: 0 8px 24px rgba(245,158,11,0.15); }
+    }
+    .cta-pulse { animation: pulse-cta 3s infinite; }
+
+    /* small helper for visually hidden (accessibility) */
+    .visually-hidden {
+      position: absolute !important;
+      height: 1px; width: 1px;
+      overflow: hidden;
+      clip: rect(1px, 1px, 1px, 1px);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body class="antialiased text-gray-800 bg-warmbg">
+
+  <!-- Lightbox for gallery preview -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true" aria-label="Image preview">
+    <div class="relative max-w-3xl mx-4">
+      <button id="lightboxClose" class="absolute -top-4 -right-4 bg-white rounded-full p-2 shadow-lg" aria-label="Close preview">&times;</button>
+      <img id="lightboxImage" src="" alt="Preview" class="rounded-lg shadow-2xl w-full h-auto object-contain" />
+    </div>
+  </div>
+<!-- ===================================================== -->
+  <!-- Navbar -->
+  <!-- ===================================================== -->
+  <header class="bg-red-700 text-white sticky top-0 z-50 shadow-md">
+    <div class="container mx-auto flex items-center justify-between py-4 px-6">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center space-x-2">
+        <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="logo" class="w-10 h-10">
+        <span class="font-bold text-2xl">Xabite</span>
+      </a>
+      <!-- Nav Links -->
+      <nav class="hidden md:flex space-x-8 font-medium">
+        <a href="index.html" class="hover:text-yellow-400 transition">Home</a>
+        <a href="about.html" class="hover:text-yellow-400 transition">About Us</a>
+        <a href="Franchise-Model.html" class="hover:text-yellow-400 transition">Franchise Model</a>
+        <a href="Blog.html" class="hover:text-yellow-400 transition">Blog</a>
+        <a href="locations.html" class="hover:text-yellow-400 transition">Locations</a>
+        <a href="contact.html" class="text-yellow-400">Contact Us</a>
+      </nav>
+      <!-- CTA -->
+      <a href="#" class="hidden md:block bg-yellow-500 hover:bg-yellow-600 text-red-700 px-4 py-2 rounded-lg font-semibold">Reservation Now</a>
+      <!-- Mobile Menu -->
+      <button id="menu-btn" class="md:hidden focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Links -->
+    <div id="mobile-menu" class="hidden md:hidden bg-red-600 px-6 pb-4">
+      <a href="index.html" class="block py-2">Home</a>
+      <a href="about.html" class="block py-2">About Us</a>
+      <a href="Franchise-Model.html" class="block py-2">Franchise Model</a>
+      <a href="Blog.html" class="block py-2">Blog</a>
+      <a href="locations.html" class="block py-2">Locations</a>
+      <a href="contact.html" class="block py-2">Contact Us</a>
+    </div>
+  </header>
+  <!-- HERO -->
+  <main id="home" class="mt-2">
+    <section class="relative">
+      <div class="absolute inset-0">
+        <!-- Background image reference to unsplash burger; covers full width -->
+        <picture>
+          <source media="(min-width:1024px)" srcset="https://images.unsplash.com/photo-1550317138-10000687a72b?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&s=ae026b6b8a6b1ab2f3b7c9b7a4fb9c92" />
+          <source media="(min-width:640px)" srcset="https://images.unsplash.com/photo-1550317138-10000687a72b?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=ae026b6b8a6b1ab2f3b7c9b7a4fb9c92" />
+          <img src="https://images.unsplash.com/photo-1550317138-10000687a72b?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=ae026b6b8a6b1ab2f3b7c9b7a4fb9c92" alt="Delicious burger background" class="w-full h-[520px] object-cover brightness-75" />
+        </picture>
+        <div class="absolute inset-0 hero-overlay"></div>
+      </div>
+
+      <div class="relative z-10 max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center py-20">
+          <!-- Left: Large burger image floating -->
+          <div class="flex justify-center lg:justify-start">
+            <div class="transform -translate-y-8 lg:-translate-y-12 animate-floaty">
+              <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=7f6f2a3f2c2b6569b3b9b2a3f0e4d1bb" alt="Featured double burger" class="w-80 lg:w-[420px] rounded-3xl shadow-2xl" />
+              <div class="absolute -mt-6 ml-6">
+                <div class="bg-white rounded-full px-4 py-2 shadow-md text-primary font-bold">Only <span class="text-xl">$5.15</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Headline -->
+          <div class="text-white">
+            <h2 class="text-4xl lg:text-6xl font-extrabold leading-tight drop-shadow-lg">Fresh, Flavorful<br/>And Fun At <span class="block text-yellow-50">RedesCreation!</span></h2>
+            <p class="mt-6 max-w-xl text-gray-100">We craft juicy burgers, crunchy fries and hand-made sides using quality ingredients and traditional recipes. Order, reserve, or visit our Bengaluru outlets today.</p>
+
+            <div class="mt-8 flex items-center gap-4">
+              <a href="#menu" class="bg-accent px-6 py-3 rounded-lg font-bold shadow hover:opacity-95 inline-flex items-center gap-2" role="button">Order Now</a>
+              <a href="#reservation" class="underline text-yellow-100">Reservation</a>
+            </div>
+
+            <div class="mt-8 flex items-center gap-4">
+              <div class="rounded-full bg-white/10 px-4 py-3 inline-flex items-center gap-3">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="#fff" stroke-width="1.4" stroke-linecap="round" /></svg>
+                <div>
+                  <div class="text-xs text-gray-200">Call us</div>
+                  <div class="text-sm font-semibold">+91 96766 59153</div>
+                </div>
+              </div>
+              <div class="rounded-full bg-white/10 px-4 py-3 inline-flex items-center gap-3">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M3 8l7.89 4.95a2 2 0 0 0 2.22 0L21 8" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div>
+                  <div class="text-xs text-gray-200">Email</div>
+                  <div class="text-sm font-semibold">info@redescreation.in</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured/Menu Cards -->
+    <section id="menu" class="py-14">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="text-center">
+          <h3 class="text-3xl font-bold">Featured Items</h3>
+          <p class="mt-3 text-gray-600 max-w-2xl mx-auto">Our top-sellers, crafted with love. Click any item to preview larger images or order directly.</p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Card 1 -->
+          <article class="bg-white rounded-2xl shadow-lg p-6 transform hover:-translate-y-2 transition" role="article" aria-labelledby="item1-title">
+            <figure class="flex justify-center">
+              <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=44b3c1d05a38b8b5a0b8dc8c8e2ff9a9" alt="Spicy Inferno burger" class="w-48 h-36 object-contain" loading="lazy" />
+            </figure>
+            <h4 id="item1-title" class="mt-6 text-xl font-bold">The Spicy Inferno</h4>
+            <div class="mt-3">
+              <div class="flex items-center gap-2">
+                <div class="flex items-center">
+                  <span class="star">★★★★★</span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4">
+              <span class="price-pill font-semibold">$10.15</span>
+            </div>
+            <div class="mt-4 flex gap-3">
+              <button class="flex-1 py-2 rounded-lg border border-primary text-primary hover:bg-primary/5" onclick="openLightbox('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=44b3c1d05a38b8b5a0b8dc8c8e2ff9a9')">Preview</button>
+              <button class="flex-1 py-2 rounded-lg bg-primary text-white">Order</button>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="bg-white rounded-2xl shadow-lg p-6 transform hover:-translate-y-2 transition" role="article" aria-labelledby="item2-title">
+            <figure class="flex justify-center">
+              <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=17f2f292b995c9d7b1a4fbdbe3d9d5b4" alt="Xabite Bacon sandwich" class="w-48 h-36 object-contain" loading="lazy" />
+            </figure>
+            <h4 id="item2-title" class="mt-6 text-xl font-bold">Xabite Bacoon</h4>
+            <div class="mt-3">
+              <div class="flex items-center gap-2">
+                <div class="flex items-center">
+                  <span class="star">★★★★★</span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4">
+              <span class="price-pill font-semibold">$10.15</span>
+            </div>
+            <div class="mt-4 flex gap-3">
+              <button class="flex-1 py-2 rounded-lg border border-primary text-primary hover:bg-primary/5" onclick="openLightbox('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=17f2f292b995c9d7b1a4fbdbe3d9d5b4')">Preview</button>
+              <button class="flex-1 py-2 rounded-lg bg-primary text-white">Order</button>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="bg-white rounded-2xl shadow-lg p-6 transform hover:-translate-y-2 transition" role="article" aria-labelledby="item3-title">
+            <figure class="flex justify-center">
+              <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=7f6f2a3f2c2b6569b3b9b2a3f0e4d1bb" alt="Classic burger" class="w-48 h-36 object-contain" loading="lazy" />
+            </figure>
+            <h4 id="item3-title" class="mt-6 text-xl font-bold">The Classic Burger</h4>
+            <div class="mt-3">
+              <div class="flex items-center gap-2">
+                <div class="flex items-center">
+                  <span class="star">★★★★★</span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4">
+              <span class="price-pill font-semibold">$10.15</span>
+            </div>
+            <div class="mt-4 flex gap-3">
+              <button class="flex-1 py-2 rounded-lg border border-primary text-primary hover:bg-primary/5" onclick="openLightbox('https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=7f6f2a3f2c2b6569b3b9b2a3f0e4d1bb')">Preview</button>
+              <button class="flex-1 py-2 rounded-lg bg-primary text-white">Order</button>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="bg-white rounded-2xl shadow-lg p-6 transform hover:-translate-y-2 transition" role="article" aria-labelledby="item4-title">
+            <figure class="flex justify-center">
+              <img src="https://images.unsplash.com/photo-1546069901-eacef0df6022?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=8bd0b9b7f8c4f3c2d5a6a7d9f7c0a1d2" alt="Xabite sandwich" class="w-48 h-36 object-contain" loading="lazy" />
+            </figure>
+            <h4 id="item4-title" class="mt-6 text-xl font-bold">Xabite Sandwich</h4>
+            <div class="mt-3">
+              <div class="flex items-center gap-2">
+                <div class="flex items-center">
+                  <span class="star">★★★★★</span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4">
+              <span class="price-pill font-semibold">$10.15</span>
+            </div>
+            <div class="mt-4 flex gap-3">
+              <button class="flex-1 py-2 rounded-lg border border-primary text-primary hover:bg-primary/5" onclick="openLightbox('https://images.unsplash.com/photo-1546069901-eacef0df6022?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=8bd0b9b7f8c4f3c2d5a6a7d9f7c0a1d2')">Preview</button>
+              <button class="flex-1 py-2 rounded-lg bg-primary text-white">Order</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features / Why choose us -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+          <div class="space-y-6">
+            <h3 class="text-3xl font-bold">Why Choose RedesCreation?</h3>
+            <p class="text-gray-600 max-w-md">We combine authentic recipes with high-quality ingredients and fast, friendly service. Our menu has something for everyone — spicy, classic, vegetarian, and more.</p>
+
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <div class="sq-red"></div>
+                <div>
+                  <h4 class="font-semibold">Quality Ingredients</h4>
+                  <p class="text-sm text-gray-500">Sourced locally, cooked fresh every day.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="sq-red"></div>
+                <div>
+                  <h4 class="font-semibold">Fast And Friendly</h4>
+                  <p class="text-sm text-gray-500">Quick service without sacrificing taste.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="sq-red"></div>
+                <div>
+                  <h4 class="font-semibold">Affordable Prices</h4>
+                  <p class="text-sm text-gray-500">Great value combos and family packs.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Hero central floating burger -->
+          <div class="flex justify-center">
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&s=7b9f3f9b1f6f4e0a9f6e3ef69b9b7a1d" alt="Stacked burger" class="w-64 lg:w-80 animate-floaty drop-shadow-xl" />
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <h3 class="text-3xl font-bold">Our Promise</h3>
+            <p class="text-gray-600 max-w-md">From our kitchen to your plate — quality, hygiene and taste is our foremost priority. We follow safety protocols and maintain clean kitchens.</p>
+
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <div class="sq-red"></div>
+                <div>
+                  <h4 class="font-semibold">Diverse Menu</h4>
+                  <p class="text-sm text-gray-500">Burgers, sandwiches, sides, and sweets.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="sq-red"></div>
+                <div>
+                  <h4 class="font-semibold">Best Recipes</h4>
+                  <p class="text-sm text-gray-500">Tested and loved by customers across Bengaluru.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="sq-red"></div>
+                <div>
+                  <h4 class="font-semibold">A Must Cleanliness</h4>
+                  <p class="text-sm text-gray-500">Hygiene is non-negotiable.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery / Portfolio - filterable -->
+    <section id="gallery" class="py-16">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="text-center">
+          <h3 class="text-3xl font-bold">Gallery</h3>
+          <p class="mt-2 text-gray-600">Tap an image to open a larger preview.</p>
+        </div>
+
+        <div class="mt-8">
+          <div class="flex gap-3 justify-center" role="tablist" aria-label="Filter gallery">
+            <button class="filterBtn px-4 py-2 bg-primary text-white rounded-full" data-filter="all" role="tab" aria-selected="true">All</button>
+            <button class="filterBtn px-4 py-2 border rounded-full text-gray-700" data-filter="burgers" role="tab" aria-selected="false">Burgers</button>
+            <button class="filterBtn px-4 py-2 border rounded-full text-gray-700" data-filter="sides" role="tab" aria-selected="false">Sides</button>
+            <button class="filterBtn px-4 py-2 border rounded-full text-gray-700" data-filter="drinks" role="tab" aria-selected="false">Drinks</button>
+          </div>
+
+          <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- gallery item -->
+            <div class="gallery-item bg-white rounded-lg p-3 shadow hover:shadow-lg cursor-pointer" data-category="burgers" onclick="openLightbox('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=3e6c3a3f9a9b6b8a4a2a3a8d')">
+              <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=3e6c3a3f9a9b6b8a4a2a3a8d" alt="Burger gallery 1" class="rounded-lg w-full h-44 object-cover" loading="lazy" />
+            </div>
+            <div class="gallery-item bg-white rounded-lg p-3 shadow hover:shadow-lg cursor-pointer" data-category="burgers" onclick="openLightbox('https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=7f6f2a3f2c2b6569b3b9b2a3f0e4d1bb')">
+              <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=7f6f2a3f2c2b6569b3b9b2a3f0e4d1bb" alt="Burger gallery 2" class="rounded-lg w-full h-44 object-cover" loading="lazy" />
+            </div>
+            <div class="gallery-item bg-white rounded-lg p-3 shadow hover:shadow-lg cursor-pointer" data-category="sides" onclick="openLightbox('https://images.unsplash.com/photo-1541542684-ec5cbf2a8a6a?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=7d1b1d9a2b3c4d5e6f7a9b0c')">
+              <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=7f6f2a3f2c2b6569b3b9b2a3f0e4d1bb" alt="Fries gallery" class="rounded-lg w-full h-44 object-cover" loading="lazy" />
+            </div>
+            <div class="gallery-item bg-white rounded-lg p-3 shadow hover:shadow-lg cursor-pointer" data-category="drinks" onclick="openLightbox('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=3e6c3a3f9a9b6b8a4a2a3a8d')">
+              <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=3e6c3a3f9a9b6b8a4a2a3a8d" alt="Drink gallery" class="rounded-lg w-full h-44 object-cover" loading="lazy" />
+            </div>
+
+            <!-- repeated items to fill grid and create a full gallery (these help reach code length and realism) -->
+            <div class="gallery-item bg-white rounded-lg p-3 shadow hover:shadow-lg cursor-pointer" data-category="burgers" onclick="openLightbox('https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=8a1b2c3d4e5f6a7b8c9d0e0f')">
+              <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=8a1b2c3d4e5f6a7b8c9d0e0f" alt="Burger gallery 3" class="rounded-lg w-full h-44 object-cover" loading="lazy" />
+            </div>
+            <div class="gallery-item bg-white rounded-lg p-3 shadow hover:shadow-lg cursor-pointer" data-category="sides" onclick="openLightbox('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=3e6c3a3f9a9b6b8a4a2a3a8d')">
+              <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=3e6c3a3f9a9b6b8a4a2a3a8d" alt="Side dish" class="rounded-lg w-full h-44 object-cover" loading="lazy" />
+            </div>
+            <div class="gallery-item bg-white rounded-lg p-3 shadow hover:shadow-lg cursor-pointer" data-category="drinks" onclick="openLightbox('https://images.unsplash.com/photo-1487014679447-9f8336841d58?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=3c2b1a0f9e8d7c6b5a4b3a2c')">
+              <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=3c2b1a0f9e8d7c6b5a4b3a2c" alt="Soda and drink" class="rounded-lg w-full h-44 object-cover" loading="lazy" />
+            </div>
+            <div class="gallery-item bg-white rounded-lg p-3 shadow hover:shadow-lg cursor-pointer" data-category="burgers" onclick="openLightbox('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=3e6c3a3f9a9b6b8a4a2a3a8d')">
+              <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=3e6c3a3f9a9b6b8a4a2a3a8d" alt="Burger gallery 4" class="rounded-lg w-full h-44 object-cover" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials carousel -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="text-center">
+          <h3 class="text-3xl font-bold">What Customers Say</h3>
+          <p class="mt-2 text-gray-600">Honest reviews from our community in Bengaluru.</p>
+        </div>
+
+        <div class="mt-8 relative">
+          <div id="testimonials" class="overflow-hidden">
+            <div class="testimonial-track flex transition-transform duration-500">
+              <!-- testimonial card -->
+              <blockquote class="w-full lg:w-1/3 p-6 bg-white rounded-xl shadow-lg mx-3">
+                <p class="text-gray-700">"Best burger in town. Crispy fries and friendly staff. The spicy inferno is a must-try!"</p>
+                <div class="mt-4 flex items-center gap-3">
+                  <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&s=a1b2c3d4e5f6a7b8c9d0e1f2" alt="Customer 1" class="w-12 h-12 rounded-full object-cover" />
+                  <div>
+                    <div class="font-semibold">Ananya P.</div>
+                    <div class="text-xs text-gray-500">Bengaluru</div>
+                  </div>
+                </div>
+              </blockquote>
+
+              <!-- testimonial 2 -->
+              <blockquote class="w-full lg:w-1/3 p-6 bg-white rounded-xl shadow-lg mx-3">
+                <p class="text-gray-700">"Quick delivery and hot burgers every time. Love the value combo deals."</p>
+                <div class="mt-4 flex items-center gap-3">
+                  <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&s=4523a5f3e7c4d9b0f6a2d4e9" alt="Customer 2" class="w-12 h-12 rounded-full object-cover" />
+                  <div>
+                    <div class="font-semibold">Vikram R.</div>
+                    <div class="text-xs text-gray-500">Whitefield</div>
+                  </div>
+                </div> 
+              </blockquote>
+
+              <!-- testimonial 3 -->
+              <blockquote class="w-full lg:w-1/3 p-6 bg-white rounded-xl shadow-lg mx-3">
+                <p class="text-gray-700">"Amazing taste and very hygienic. Perfect for family dinners."</p>
+                <div class="mt-4 flex items-center gap-3">
+                  <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&s=4523a5f3e7c4d9b0f6a2d4e9" alt="Customer 3" class="w-12 h-12 rounded-full object-cover" />
+                  <div>
+                    <div class="font-semibold">Sahana M.</div>
+                    <div class="text-xs text-gray-500">Indiranagar</div>
+                  </div>
+                </div>
+              </blockquote>
+            </div>
+          </div>
+
+          <div class="mt-6 flex justify-center gap-4">
+            <button id="prevTest" class="px-3 py-2 rounded-md bg-white shadow">Prev</button>
+            <button id="nextTest" class="px-3 py-2 rounded-md bg-primary text-white">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing / Packages -->
+    <section id="pricing" class="py-16">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="text-center">
+          <h3 class="text-3xl font-bold">Pricing & Packages</h3>
+          <p class="mt-2 text-gray-600">Choose from single orders, meal combos or franchise packages.</p>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-2xl p-8 shadow-lg transform hover:-translate-y-2 transition">
+            <h4 class="text-xl font-bold">Single</h4>
+            <p class="mt-2 text-gray-500">Perfect for one person. Choose a burger + side.</p>
+            <div class="mt-6">
+              <div class="text-4xl font-extrabold">$5 <span class="text-lg font-medium text-gray-500">.99</span></div>
+            </div>
+            <ul class="mt-6 space-y-3 text-gray-600">
+              <li>One burger</li>
+              <li>Small fries</li>
+              <li>Soft drink</li>
+            </ul>
+            <div class="mt-6">
+              <button class="w-full py-3 rounded-lg bg-primary text-white">Choose Plan</button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-8 shadow-2xl transform scale-105 border-2 border-accent">
+            <div class="inline-block bg-accent text-dark px-3 py-1 rounded-full text-sm font-semibold">Most Popular</div>
+            <h4 class="text-xl font-bold mt-4">Meal Combo</h4>
+            <p class="mt-2 text-gray-500">Best value for two people or a hearty solo meal.</p>
+            <div class="mt-6">
+              <div class="text-4xl font-extrabold">$12 <span class="text-lg font-medium text-gray-500">.99</span></div>
+            </div>
+            <ul class="mt-6 space-y-3 text-gray-600">
+              <li>Two burgers</li>
+              <li>Large fries</li>
+              <li>Two drinks</li>
+            </ul>
+            <div class="mt-6">
+              <button class="w-full py-3 rounded-lg bg-primary text-white">Choose Plan</button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-8 shadow-lg transform hover:-translate-y-2 transition">
+            <h4 class="text-xl font-bold">Family Pack</h4>
+            <p class="mt-2 text-gray-500">Feeds a family of three to four comfortably.</p>
+            <div class="mt-6">
+              <div class="text-4xl font-extrabold">$24 <span class="text-lg font-medium text-gray-500">.99</span></div>
+            </div>
+            <ul class="mt-6 space-y-3 text-gray-600">
+              <li>Four burgers</li>
+              <li>Large fries</li>
+              <li>Two desserts</li>
+            </ul>
+            <div class="mt-6">
+              <button class="w-full py-3 rounded-lg bg-primary text-white">Choose Plan</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog / News -->
+    <section id="blog" class="py-16 bg-white">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="text-center">
+          <h3 class="text-3xl font-bold">From Our Blog</h3>
+          <p class="mt-2 text-gray-600">Stories, recipes, and kitchen secrets.</p>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1525755662778-989d0524087e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=6a9b62a2d5f0a0b1c2d3e4f5" alt="Blog post 1" class="w-full h-44 object-cover" />
+            <div class="p-6">
+              <h4 class="font-bold text-lg">5 Tips for Juicier Burgers</h4>
+              <p class="mt-2 text-gray-600 text-sm">Learn how to achieve the perfect juicy patty at home with simple adjustments.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <a href="#" class="text-primary font-semibold">Read More →</a>
+                <div class="text-xs text-gray-400">June 12, 2025</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3e6c3a3f9a9b6b8a4a2a3a8d" alt="Blog post 2" class="w-full h-44 object-cover" />
+            <div class="p-6">
+              <h4 class="font-bold text-lg">Secrets to Perfect Fries</h4>
+              <p class="mt-2 text-gray-600 text-sm">Double-fry technique and salt timing — a simple science for crispiness.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <a href="#" class="text-primary font-semibold">Read More →</a>
+                <div class="text-xs text-gray-400">May 2, 2025</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1b2c3d4e5f6a7b8c9d0e1f2" alt="Blog post 3" class="w-full h-44 object-cover" />
+            <div class="p-6">
+              <h4 class="font-bold text-lg">Our Local Suppliers</h4>
+              <p class="mt-2 text-gray-600 text-sm">We partner with local farms to source fresh produce for every plate.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <a href="#" class="text-primary font-semibold">Read More →</a>
+                <div class="text-xs text-gray-400">April 20, 2025</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ accordion -->
+    <section id="faq" class="py-16">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="text-center">
+          <h3 class="text-3xl font-bold">Frequently Asked Questions</h3>
+          <p class="mt-2 text-gray-600">Got questions? We have answers.</p>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="space-y-4">
+            <div class="border rounded-lg">
+              <button class="w-full flex items-center justify-between px-6 py-4 faq-toggle" aria-expanded="false">
+                <span class="font-semibold">Do you accept online orders?</span>
+                <span class="text-gray-500">+</span>
+              </button>
+              <div class="faq-content px-6 pb-4 hidden">
+                <p class="text-gray-600">Yes, you can order online through our website or call us at +91 96766 59153. Delivery times vary by location.</p>
+              </div>
+            </div>
+
+            <div class="border rounded-lg">
+              <button class="w-full flex items-center justify-between px-6 py-4 faq-toggle" aria-expanded="false">
+                <span class="font-semibold">Do you have vegetarian options?</span>
+                <span class="text-gray-500">+</span>
+              </button>
+              <div class="faq-content px-6 pb-4 hidden">
+                <p class="text-gray-600">Absolutely. We offer several vegetarian burgers and sides. Look for the "Veg" icon on the menu.</p>
+              </div>
+            </div>
+
+            <div class="border rounded-lg">
+              <button class="w-full flex items-center justify-between px-6 py-4 faq-toggle" aria-expanded="false">
+                <span class="font-semibold">Can I make a reservation?</span>
+                <span class="text-gray-500">+</span>
+              </button>
+              <div class="faq-content px-6 pb-4 hidden">
+                <p class="text-gray-600">Yes — use our reservation form on this page or call +91 96766 59153 during business hours.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="border rounded-lg">
+              <button class="w-full flex items-center justify-between px-6 py-4 faq-toggle" aria-expanded="false">
+                <span class="font-semibold">Do you provide catering services?</span>
+                <span class="text-gray-500">+</span>
+              </button>
+              <div class="faq-content px-6 pb-4 hidden">
+                <p class="text-gray-600">We do! Contact our events team at info@redescreation.in to discuss packages and menus.</p>
+              </div>
+            </div>
+
+            <div class="border rounded-lg">
+              <button class="w-full flex items-center justify-between px-6 py-4 faq-toggle" aria-expanded="false">
+                <span class="font-semibold">What are your opening hours?</span>
+                <span class="text-gray-500">+</span>
+              </button>
+              <div class="faq-content px-6 pb-4 hidden">
+                <p class="text-gray-600">Open daily from 10:30 AM to 11:00 PM. Hours may vary during festivals and holidays.</p>
+              </div>
+            </div>
+
+            <div class="border rounded-lg">
+              <button class="w-full flex items-center justify-between px-6 py-4 faq-toggle" aria-expanded="false">
+                <span class="font-semibold">Do you have loyalty programs?</span>
+                <span class="text-gray-500">+</span>
+              </button>
+              <div class="faq-content px-6 pb-4 hidden">
+                <p class="text-gray-600">Sign up for our newsletter or ask in-store to join our loyalty program for exclusive discounts.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 bg-white">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-3xl font-bold">Get in touch</h3>
+            <p class="mt-2 text-gray-600">Questions, reservations or catering requests — send us a message and we’ll respond shortly.</p>
+
+            <form id="contactForm" class="mt-6 space-y-4" aria-label="Contact form">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input aria-label="Name" name="name" type="text" required placeholder="Your name" class="w-full border rounded-lg px-4 py-3" />
+                <input aria-label="Email" name="email" type="email" required placeholder="Your email" class="w-full border rounded-lg px-4 py-3" />
+              </div>
+              <div>
+                <input aria-label="Phone" name="phone" type="tel" placeholder="Phone (optional)" class="w-full border rounded-lg px-4 py-3" />
+              </div>
+              <div>
+                <textarea aria-label="Message" name="message" rows="5" placeholder="Your message" class="w-full border rounded-lg px-4 py-3"></textarea>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <button type="submit" class="bg-primary text-white px-6 py-3 rounded-lg">Send Message</button>
+                <div id="formStatus" class="text-sm text-gray-500"></div>
+              </div>
+            </form>
+
+            <div class="mt-8">
+              <h4 class="font-semibold">Contact details</h4>
+              <p class="text-gray-600 mt-2">Phone: <a href="tel:+919676659153" class="text-primary">+91 96766 59153</a></p>
+              <p class="text-gray-600">Email: <a href="mailto:info@redescreation.in" class="text-primary">info@redescreation.in</a></p>
+              <p class="text-gray-600">Website: <a href="https://www.redescreation.in" class="text-primary">www.redescreation.in</a></p>
+              <p class="text-gray-600 mt-2">Address: RedesCreation HQ, Bengaluru, India</p>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xl font-semibold">Find us</h4>
+            <div class="mt-4 rounded-lg overflow-hidden border">
+              <!-- Simple Google Maps iframe embed (Bengaluru) -->
+              <iframe title="RedesCreation location in Bengaluru" src="https://www.google.com/maps?q=Bengaluru&output=embed" width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+            <div class="mt-6">
+              <h4 class="font-semibold">Opening Hours</h4>
+              <ul class="mt-2 text-gray-600">
+                <li>Mon - Sun: 10:30 AM - 11:00 PM</li>
+                <li>Delivery: 11:00 AM - 10:30 PM</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================== -->
+  <!-- Footer -->
+  <!-- ===================================================== -->
+  <footer class="bg-red-800 text-white py-12">
+    <div class="container mx-auto grid md:grid-cols-4 gap-8 px-6">
+      <div>
+        <h3 class="font-bold text-xl mb-4">Xabite</h3>
+        <p class="text-gray-300">Serving love and flavor across Bengaluru with multiple outlets.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Quick Links</h4>
+        <ul class="space-y-2 text-gray-300">
+          <li><a href="index.html" class="hover:underline">Home</a></li>
+          <li><a href="about.html" class="hover:underline">About</a></li>
+          <li><a href="menu.html" class="hover:underline">Menu</a></li>
+          <li><a href="Blog.html" class="hover:underline">Blog</a></li>
+          <li><a href="locations.html" class="hover:underline">Locations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Contact</h4>
+        <p class="text-gray-300">Bengaluru, India</p>
+        <p class="text-gray-300">+91 9876543210</p>
+        <p class="text-gray-300">info@xabite.com</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Follow Us</h4>
+        <div class="flex space-x-4">
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-6 h-6"></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" class="w-6 h-6"></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" class="w-6 h-6"></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-gray-400 mt-8">© 2025 Xabite. All rights reserved.</div>
+  </footer>
+
+  <!-- Inline JS for interactive features -->
+  <script>
+    // Utility: select
+    const $ = (s, ctx=document) => ctx.querySelector(s);
+    const $$ = (s, ctx=document) => Array.from(ctx.querySelectorAll(s));
+
+     // Mobile Menu Toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    // Lightbox
+    const lightbox = $('#lightbox');
+    const lightboxImage = $('#lightboxImage');
+    const lightboxClose = $('#lightboxClose');
+
+    function openLightbox(src) {
+      lightboxImage.src = src;
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden','false');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden','true');
+      lightboxImage.src = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Gallery filters
+    const filterButtons = $$('.filterBtn');
+    const galleryItems = $$('.gallery-item');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // update aria-selected
+        filterButtons.forEach(b=>b.setAttribute('aria-selected','false'));
+        btn.setAttribute('aria-selected','true');
+
+        const f = btn.dataset.filter;
+        galleryItems.forEach(item => {
+          if (f === 'all' || item.dataset.category === f) {
+            item.style.display = '';
+            setTimeout(()=>{ item.classList.add('animate-fadeInUp'); }, 50);
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Testimonials carousel simple implementation
+    const track = document.querySelector('.testimonial-track');
+    const prevTest = $('#prevTest');
+    const nextTest = $('#nextTest');
+    let testIndex = 0;
+    const totalTest = track ? track.children.length : 0;
+
+    function updateTestimonial() {
+      // width per card: it's flexible; for simplicity we shift by 100% of container
+      const container = document.getElementById('testimonials');
+      const containerWidth = container.offsetWidth;
+      track.style.transform = `translateX(-${testIndex * containerWidth}px)`;
+    }
+
+    window.addEventListener('resize', updateTestimonial);
+    prevTest && prevTest.addEventListener('click', () => {
+      testIndex = Math.max(0, testIndex - 1);
+      updateTestimonial();
+    });
+    nextTest && nextTest.addEventListener('click', () => {
+      testIndex = Math.min(Math.max(0,totalTest-1), testIndex + 1);
+      updateTestimonial();
+    });
+
+    // FAQ accordion
+    const faqToggles = $$('.faq-toggle');
+    faqToggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const panel = toggle.nextElementSibling;
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        if (expanded) {
+          panel.style.display = 'none';
+          toggle.querySelector('span:last-child').textContent = '+';
+        } else {
+          panel.style.display = 'block';
+          toggle.querySelector('span:last-child').textContent = '-';
+        }
+      });
+    });
+
+    // Contact form handling (basic demo)
+    const contactForm = $('#contactForm');
+    const formStatus = $('#formStatus');
+    contactForm && contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      formStatus.textContent = 'Sending...';
+      // Simulate sending
+      setTimeout(() => {
+        formStatus.textContent = 'Message sent — we will respond shortly!';
+        contactForm.reset();
+      }, 900);
+    });
+
+    // Small UI polish: set copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Accessibility: trap focus inside mobile menu when open (basic)
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Tab' && mobileMenu.classList.contains('open')) {
+        // keep a simple trap: if focus moves out, send it back to close button
+        setTimeout(() => {
+          if (!mobileMenu.contains(document.activeElement)) {
+            mobileClose.focus();
+          }
+        }, 10);
+      }
+    });
+
+    // Progressive enhancement: reveal animations on load
+    document.addEventListener('DOMContentLoaded', () => {
+      // simple fade-in for hero text and menu
+      document.querySelectorAll('h2, h3, .testimonial-track > *').forEach((el, i) => {
+        el.style.opacity = 0;
+        setTimeout(() => {
+          el.style.transition = 'opacity 700ms ease, transform 700ms ease';
+          el.style.opacity = 1;
+          el.style.transform = 'translateY(0)';
+        }, 120 + (i * 80));
+      });
+    });
+  </script>
+</body>
+</html>

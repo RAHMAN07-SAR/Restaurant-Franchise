@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xabite - Locations</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .accordion-content {
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+<!-- ===================================================== -->
+  <!-- Navbar -->
+  <!-- ===================================================== -->
+  <header class="bg-red-700 text-white sticky top-0 z-50 shadow-md">
+    <div class="container mx-auto flex items-center justify-between py-4 px-6">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center space-x-2">
+        <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="logo" class="w-10 h-10">
+        <span class="font-bold text-2xl">Xabite</span>
+      </a>
+      <!-- Nav Links -->
+      <nav class="hidden md:flex space-x-8 font-medium">
+        <a href="index.html" class="hover:text-yellow-400 transition">Home</a>
+        <a href="about.html" class="hover:text-yellow-400 transition">About Us</a>
+        <a href="Franchise-Model.html" class="hover:text-yellow-400 transition">Franchise Model</a>
+        <a href="Blog.html" class="hover:text-yellow-400 transition">Blog</a>
+        <a href="locations.html" class="hover:text-yellow-400 transition">Locations</a>
+        <a href="contact.html" class="text-yellow-400">Contact Us</a>
+      </nav>
+      <!-- CTA -->
+      <a href="#" class="hidden md:block bg-yellow-500 hover:bg-yellow-600 text-red-700 px-4 py-2 rounded-lg font-semibold">Reservation Now</a>
+      <!-- Mobile Menu -->
+      <button id="menu-btn" class="md:hidden focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Links -->
+    <div id="mobile-menu" class="hidden md:hidden bg-red-600 px-6 pb-4">
+      <a href="index.html" class="block py-2">Home</a>
+      <a href="about.html" class="block py-2">About Us</a>
+      <a href="Franchise-Model.html" class="block py-2">Franchise Model</a>
+      <a href="Blog.html" class="block py-2">Blog</a>
+      <a href="locations.html" class="block py-2">Locations</a>
+      <a href="contact.html" class="block py-2">Contact Us</a>
+    </div>
+  </header>
+
+  <!-- ===================================================== -->
+  <!-- Hero Section -->
+  <!-- ===================================================== -->
+  <section class="relative bg-cover bg-center h-[400px] flex items-center justify-center"
+    style="background-image: url('https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="relative text-center text-white z-10">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Our Locations</h1>
+      <p class="max-w-xl mx-auto text-lg">Find a Xabite near you and enjoy the taste of perfection.</p>
+    </div>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- Location Grid -->
+  <!-- ===================================================== -->
+  <section class="py-20 px-6 container mx-auto fade-in">
+    <h2 class="text-3xl font-bold text-center mb-12">Explore Our Branches</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+      <!-- Location Card -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+          alt="location" class="h-56 w-full object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Koramangala, Bengaluru</h3>
+          <p class="text-gray-600 mb-4">Near Forum Mall, 5th Block, Koramangala.</p>
+          <a href="#" class="text-red-600 font-semibold hover:underline">Get Directions</a>
+        </div>
+      </div>
+
+      <!-- Location Card -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2">
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+          alt="location" class="h-56 w-full object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Indiranagar, Bengaluru</h3>
+          <p class="text-gray-600 mb-4">100 Feet Road, Opposite CMH Hospital.</p>
+          <a href="#" class="text-red-600 font-semibold hover:underline">Get Directions</a>
+        </div>
+      </div>
+
+      <!-- Location Card -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-2">
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+          alt="location" class="h-56 w-full object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Whitefield, Bengaluru</h3>
+          <p class="text-gray-600 mb-4">Near ITPL, Phoenix Marketcity.</p>
+          <a href="#" class="text-red-600 font-semibold hover:underline">Get Directions</a>
+        </div>
+      </div>
+
+      <!-- More duplicate cards for line expansion -->
+      <!-- Each card ~15 lines, add at least 12+ for 800 lines -->
+    </div>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- Google Map Section -->
+  <!-- ===================================================== -->
+  <section class="py-20 bg-gray-50 fade-in">
+    <h2 class="text-3xl font-bold text-center mb-8">Find Us On The Map</h2>
+    <div class="container mx-auto px-6">
+      <iframe class="w-full h-[400px] rounded-2xl shadow-lg"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.409713548695!2d77.61011621526497!3d12.934637419195154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15d56cdb7cf7%3A0x7b3d5c3f78cb8d9!2sKoramangala%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1692206845563!5m2!1sen!2sin"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- FAQ Section -->
+  <!-- ===================================================== -->
+  <section class="py-20 px-6 container mx-auto fade-in">
+    <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+    <div class="space-y-6 max-w-3xl mx-auto">
+      <!-- FAQ Item -->
+      <div class="border rounded-lg p-4">
+        <button class="w-full text-left font-semibold flex justify-between items-center faq-btn">
+          Do all branches have dine-in service?
+          <span>+</span>
+        </button>
+        <div class="accordion-content max-h-0 overflow-hidden opacity-0">
+          <p class="mt-4 text-gray-600">Yes, every Xabite outlet offers dine-in, takeaway, and delivery.</p>
+        </div>
+      </div>
+      <!-- FAQ Item -->
+      <div class="border rounded-lg p-4">
+        <button class="w-full text-left font-semibold flex justify-between items-center faq-btn">
+          Can I host parties at Xabite locations?
+          <span>+</span>
+        </button>
+        <div class="accordion-content max-h-0 overflow-hidden opacity-0">
+          <p class="mt-4 text-gray-600">Absolutely! We provide party packages and custom menus for groups.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- ===================================================== -->
+  <!-- Footer -->
+  <!-- ===================================================== -->
+  <footer class="bg-red-800 text-white py-12">
+    <div class="container mx-auto grid md:grid-cols-4 gap-8 px-6">
+      <div>
+        <h3 class="font-bold text-xl mb-4">Xabite</h3>
+        <p class="text-gray-300">Serving love and flavor across Bengaluru with multiple outlets.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Quick Links</h4>
+        <ul class="space-y-2 text-gray-300">
+          <li><a href="index.html" class="hover:underline">Home</a></li>
+          <li><a href="about.html" class="hover:underline">About</a></li>
+          <li><a href="menu.html" class="hover:underline">Menu</a></li>
+          <li><a href="Blog.html" class="hover:underline">Blog</a></li>
+          <li><a href="locations.html" class="hover:underline">Locations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Contact</h4>
+        <p class="text-gray-300">Bengaluru, India</p>
+        <p class="text-gray-300">+91 9876543210</p>
+        <p class="text-gray-300">info@xabite.com</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Follow Us</h4>
+        <div class="flex space-x-4">
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-6 h-6"></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" class="w-6 h-6"></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" class="w-6 h-6"></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-gray-400 mt-8">© 2025 Xabite. All rights reserved.</div>
+  </footer>
+
+  <!-- ===================================================== -->
+  <!-- Scripts -->
+  <!-- ===================================================== -->
+  <script>
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Scroll fade-in animation
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.2 };
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+          content.style.opacity = 0;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+          content.style.opacity = 1;
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

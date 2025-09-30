@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Franchise Model — RedesCreation | Bengaluru</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta name="description" content="RedesCreation franchise opportunities in Bengaluru — learn about packages, support, investment, training, and how to join our growing family." />
+  <meta name="author" content="RedesCreation" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind customization (colors, animations) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#c7301f',
+            accent: '#f59e0b',
+            dark: '#111827',
+            warmbg: '#fbfaf8',
+            card: '#fffaf8'
+          },
+          keyframes: {
+            floaty: {
+              '0%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+              '100%': { transform: 'translateY(0px)' }
+            },
+            fadeInUp: {
+              '0%': { opacity: 0, transform: 'translateY(16px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' }
+            },
+            slideInLeft: {
+              '0%': { opacity: 0, transform: 'translateX(-30px)' },
+              '100%': { opacity: 1, transform: 'translateX(0)' }
+            },
+            pulseBtn: {
+              '0%': { transform: 'scale(1)' },
+              '50%': { transform: 'scale(1.03)' },
+              '100%': { transform: 'scale(1)' }
+            }
+          },
+          animation: {
+            floaty: 'floaty 4s ease-in-out infinite',
+            fadeInUp: 'fadeInUp 0.9s ease forwards',
+            slideInLeft: 'slideInLeft 0.9s ease forwards',
+            pulseBtn: 'pulseBtn 2.8s ease-in-out infinite'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* small helper class aligned with reference */
+    .max-w-6x1 { max-width: 1240px; } /* requested site width */
+    .hero-overlay {
+      background: linear-gradient(90deg, rgba(199,49,31,0.92) 0%, rgba(199,49,31,0.72) 60%);
+    }
+    .visually-hidden {
+      position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;
+    }
+    /* mobile slide nav */
+    .mobile-nav { transform: translateX(110%); transition: transform .35s cubic-bezier(.2,.9,.3,1); }
+    .mobile-nav.open { transform: translateX(0%); }
+    /* lightbox */
+    .lightbox { position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,0.7); z-index:60; }
+    .lightbox.open { display:flex; }
+    /* pricing highlight */
+    .badge-accent { background: linear-gradient(90deg,#f59e0b,#ffb84d); color:#111827; }
+    /* small CTA pulse */
+    .cta-pulse { animation: pulseBtn 2.8s infinite; }
+    /* subtle rounded card border for reference style */
+    .rounded-card { border-radius:16px; }
+  </style>
+</head>
+<body class="bg-warmbg text-gray-800 antialiased">
+
+  <!-- LIGHTBOX FOR IMAGES -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true" aria-label="Image preview">
+    <div class="max-w-3xl w-[92%] p-4">
+      <button id="lightboxClose" class="absolute right-6 top-6 bg-white rounded-full p-2 shadow-lg" aria-label="Close image preview">✕</button>
+      <img id="lightboxImg" src="" alt="Preview" class="w-full h-auto rounded-lg shadow-xl object-contain" />
+    </div>
+  </div>
+
+  <!-- ===================================================== -->
+  <!-- Navbar -->
+  <!-- ===================================================== -->
+  <header class="bg-red-700 text-white sticky top-0 z-50 shadow-md">
+    <div class="container mx-auto flex items-center justify-between py-4 px-6">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center space-x-2">
+        <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="logo" class="w-10 h-10">
+        <span class="font-bold text-2xl">Xabite</span>
+      </a>
+      <!-- Nav Links -->
+      <nav class="hidden md:flex space-x-8 font-medium">
+        <a href="index.html" class="hover:text-yellow-400 transition">Home</a>
+        <a href="about.html" class="hover:text-yellow-400 transition">About Us</a>
+        <a href="Franchise-Model.html" class="hover:text-yellow-400 transition">Franchise Model</a>
+        <a href="Blog.html" class="hover:text-yellow-400 transition">Blog</a>
+        <a href="locations.html" class="hover:text-yellow-400 transition">Locations</a>
+        <a href="contact.html" class="text-yellow-400">Contact Us</a>
+      </nav>
+      <!-- CTA -->
+      <a href="#" class="hidden md:block bg-yellow-500 hover:bg-yellow-600 text-red-700 px-4 py-2 rounded-lg font-semibold">Reservation Now</a>
+      <!-- Mobile Menu -->
+      <button id="menu-btn" class="md:hidden focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Links -->
+    <div id="mobile-menu" class="hidden md:hidden bg-red-600 px-6 pb-4">
+      <a href="index.html" class="block py-2">Home</a>
+      <a href="about.html" class="block py-2">About Us</a>
+      <a href="Franchise-Model.html" class="block py-2">Franchise Model</a>
+      <a href="Blog.html" class="block py-2">Blog</a>
+      <a href="locations.html" class="block py-2">Locations</a>
+      <a href="contact.html" class="block py-2">Contact Us</a>
+    </div>
+  </header>
+  <!-- MAIN -->
+  <main id="main" class="pt-6">
+
+    <!-- HERO: Franchise Overview -->
+    <section class="relative">
+      <div class="absolute inset-0">
+        <picture>
+          <source media="(min-width:1024px)" srcset="https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=2200&auto=format&fit=crop&ixlib=rb-4.0.3&s=8a1b2c3d4e5f6a7b8c9d0e0f" />
+          <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=8a1b2c3d4e5f6a7b8c9d0e0f" alt="Franchise hero" class="w-full h-[540px] object-cover brightness-75" />
+        </picture>
+        <div class="absolute inset-0 hero-overlay"></div>
+      </div>
+
+      <div class="relative z-10 max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center py-28">
+          <!-- left image floating -->
+          <div class="flex justify-center lg:justify-start">
+            <div class="relative animate-floaty -mt-8">
+              <img src="https://images.unsplash.com/photo-1546069901-eacef0df6022?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=8bd0b9b7f8c4f3c2d5a6a7d9f7c0a1d2" alt="Franchise burger" class="w-80 lg:w-[460px] rounded-3xl shadow-2xl" />
+              <div class="absolute -left-6 -top-6 bg-white rounded-full px-4 py-2 shadow-md text-primary font-bold">Only <span class="text-xl">$5.15</span></div>
+            </div>
+          </div>
+
+          <!-- right text -->
+          <div class="text-white">
+            <h1 class="text-4xl lg:text-6xl font-extrabold leading-tight drop-shadow-lg">Join RedesCreation<br /><span class="block text-yellow-50">Franchise Family</span></h1>
+            <p class="mt-6 max-w-xl text-gray-100">Grow with a proven fast-food franchise model tailored for Bengaluru’s market. Full support, training, and marketing to ensure your success.</p>
+
+            <div class="mt-8 flex flex-wrap gap-4">
+              <a href="#packages" class="bg-accent px-6 py-3 rounded-lg font-bold shadow hover:opacity-95 inline-flex items-center gap-2">View Packages</a>
+              <a href="#contactForm" class="underline text-yellow-100">Get in touch</a>
+            </div>
+
+            <div class="mt-8 flex items-center gap-4">
+              <div class="rounded-full bg-white/10 px-4 py-3 inline-flex items-center gap-3">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="#fff" stroke-width="1.4" stroke-linecap="round" /></svg>
+                <div>
+                  <div class="text-xs text-gray-200">Call us</div>
+                  <div class="text-sm font-semibold">+91 96766 59153</div>
+                </div>
+              </div>
+              <div class="rounded-full bg-white/10 px-4 py-3 inline-flex items-center gap-3">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M3 8l7.89 4.95a2 2 0 0 0 2.22 0L21 8" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div>
+                  <div class="text-xs text-gray-200">Email</div>
+                  <div class="text-sm font-semibold">info@redescreation.in</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK FACTS -->
+    <section class="py-12 bg-white">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-card bg-card shadow hover:shadow-lg transition transform hover:-translate-y-2">
+            <h3 class="text-xl font-bold">Proven Model</h3>
+            <p class="mt-2 text-gray-600">Our franchise model is optimized for quick ROI and repeat business, with localized menu options for Bengaluru neighborhoods.</p>
+          </div>
+          <div class="p-6 rounded-card bg-card shadow hover:shadow-lg transition transform hover:-translate-y-2">
+            <h3 class="text-xl font-bold">Full Support</h3>
+            <p class="mt-2 text-gray-600">From site selection to training and marketing — we partner with you at every step.</p>
+          </div>
+          <div class="p-6 rounded-card bg-card shadow hover:shadow-lg transition transform hover:-translate-y-2">
+            <h3 class="text-xl font-bold">Marketing & Supply</h3>
+            <p class="mt-2 text-gray-600">Centralized supply chain, brand campaigns, and local promotions included in our franchise packages.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY FRANCHISE WITH US (DETAILED) -->
+    <section class="py-16">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold">Why Franchise with RedesCreation?</h2>
+            <p class="text-gray-600">We designed our franchise program with scalability and franchisee profitability at the center. Our focus on consistent quality, cost control, and strong local marketing helps new outlets succeed quickly.</p>
+
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div class="flex gap-4 items-start">
+                <div class="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">01</div>
+                <div>
+                  <h4 class="font-semibold">Site Selection</h4>
+                  <p class="text-sm text-gray-500">We assist with site feasibility and local demographic analysis.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4 items-start">
+                <div class="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">02</div>
+                <div>
+                  <h4 class="font-semibold">Training</h4>
+                  <p class="text-sm text-gray-500">Operational and culinary training to maintain brand standards.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4 items-start">
+                <div class="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">03</div>
+                <div>
+                  <h4 class="font-semibold">Supply Chain</h4>
+                  <p class="text-sm text-gray-500">Reliable suppliers and quality control for consistent taste.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4 items-start">
+                <div class="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">04</div>
+                <div>
+                  <h4 class="font-semibold">Marketing</h4>
+                  <p class="text-sm text-gray-500">Local and national campaigns to drive brand awareness and footfall.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 flex gap-4">
+              <a href="#packages" class="bg-accent px-6 py-3 rounded-lg font-bold shadow hover:opacity-95">See Packages</a>
+              <a href="#contactForm" class="underline text-primary">Request Info</a>
+            </div>
+          </div>
+
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=3a2b1c9d8e7f6a5b4c3d2e1f" alt="franchise team" class="rounded-2xl shadow-xl w-full object-cover" />
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="bg-white/90 p-6 rounded-lg shadow-lg max-w-xs text-center">
+                <h4 class="font-bold">Fast Onboarding</h4>
+                <p class="text-sm text-gray-600 mt-2">From sign-up to opening in 8-12 weeks with our express setup plan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FRANCHISE PROCESS (STEPS) -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold">Our Onboarding Process</h2>
+          <p class="mt-2 text-gray-600">A transparent, step-by-step plan so you know exactly what to expect.</p>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-4">
+          <div class="p-6 rounded-card bg-card shadow hover:shadow-lg transition transform hover:-translate-y-2 fade-in">
+            <div class="h-14 w-14 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">1</div>
+            <h4 class="mt-4 font-semibold">Initial Inquiry</h4>
+            <p class="mt-2 text-sm text-gray-500">Tell us about your location and investment goals — we’ll review and revert quickly.</p>
+          </div>
+
+          <div class="p-6 rounded-card bg-card shadow hover:shadow-lg transition transform hover:-translate-y-2 fade-in">
+            <div class="h-14 w-14 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">2</div>
+            <h4 class="mt-4 font-semibold">Site Visit & Approval</h4>
+            <p class="mt-2 text-sm text-gray-500">Our team visits potential sites and gives a go/no-go recommendation.</p>
+          </div>
+
+          <div class="p-6 rounded-card bg-card shadow hover:shadow-lg transition transform hover:-translate-y-2 fade-in">
+            <div class="h-14 w-14 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">3</div>
+            <h4 class="mt-4 font-semibold">Agreement & Payment</h4>
+            <p class="mt-2 text-sm text-gray-500">Sign the franchise agreement and complete the initial investment payment.</p>
+          </div>
+
+          <div class="p-6 rounded-card bg-card shadow hover:shadow-lg transition transform hover:-translate-y-2 fade-in">
+            <div class="h-14 w-14 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">4</div>
+            <h4 class="mt-4 font-semibold">Training & Launch</h4>
+            <p class="mt-2 text-sm text-gray-500">Comprehensive training, supply setup and grand opening support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PACKAGES & INVESTMENT -->
+    <section id="packages" class="py-16">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold">Franchise Packages</h2>
+          <p class="mt-2 text-gray-600">Flexible investment tiers tailored for different budgets and locations.</p>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-3">
+          <!-- Package: Start-Up -->
+          <article class="bg-white rounded-2xl shadow-lg p-8 transform hover:-translate-y-2 transition">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-xl font-bold">Start-Up</h3>
+                <p class="text-sm text-gray-500">Best for kiosks and small take-away spots</p>
+              </div>
+              <div class="badge-accent px-3 py-1 rounded-full font-semibold">Popular</div>
+            </div>
+
+            <div class="mt-6">
+              <div class="text-4xl font-extrabold">₹ 9.5 Lakh <span class="text-lg font-medium text-gray-500">approx.</span></div>
+              <p class="text-sm text-gray-500 mt-1">Est. initial investment (excl. rent)</p>
+            </div>
+
+            <ul class="mt-6 space-y-2 text-gray-600">
+              <li>Site support & setup</li>
+              <li>2 weeks on-site training</li>
+              <li>Standard equipment package</li>
+              <li>Menu & POS integration</li>
+            </ul>
+
+            <div class="mt-6 flex gap-3">
+              <button class="flex-1 py-3 rounded-lg bg-primary text-white">Request Details</button>
+              <button class="flex-1 py-3 rounded-lg border border-primary text-primary" onclick="openLightbox('https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=8a1b2c3d4e5f6a7b8c9d0e0f')">View Gallery</button>
+            </div>
+          </article>
+
+          <!-- Package: Growth -->
+          <article class="bg-white rounded-2xl shadow-2xl p-8 transform scale-105 border-2 border-accent">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-xl font-bold">Growth</h3>
+                <p class="text-sm text-gray-500">Ideal for full dine-in restaurants in prime locations</p>
+              </div>
+              <div class="inline-block bg-accent text-dark px-3 py-1 rounded-full text-sm font-semibold">Best Value</div>
+            </div>
+
+            <div class="mt-6">
+              <div class="text-4xl font-extrabold">₹ 18 Lakh <span class="text-lg font-medium text-gray-500">approx.</span></div>
+              <p class="text-sm text-gray-500 mt-1">Includes advanced equipment & marketing</p>
+            </div>
+
+            <ul class="mt-6 space-y-2 text-gray-600">
+              <li>In-depth kitchen & staff training</li>
+              <li>Advanced equipment & branding</li>
+              <li>Launch marketing campaign</li>
+              <li>Ongoing operations support</li>
+            </ul>
+
+            <div class="mt-6 flex gap-3">
+              <button class="flex-1 py-3 rounded-lg bg-primary text-white">Request Details</button>
+              <button class="flex-1 py-3 rounded-lg border border-primary text-primary" onclick="openLightbox('https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=3a2b1c9d8e7f6a5b4c3d2e1f')">View Gallery</button>
+            </div>
+          </article>
+
+          <!-- Package: Franchise Plus -->
+          <article class="bg-white rounded-2xl shadow-lg p-8 transform hover:-translate-y-2 transition">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-xl font-bold">Franchise Plus</h3>
+                <p class="text-sm text-gray-500">For multi-outlet investors & regional partners</p>
+              </div>
+              <div class="px-3 py-1 rounded-full font-semibold bg-primary/10 text-primary">Enterprise</div>
+            </div>
+
+            <div class="mt-6">
+              <div class="text-4xl font-extrabold">₹ 40 Lakh+ <span class="text-lg font-medium text-gray-500">approx.</span></div>
+              <p class="text-sm text-gray-500 mt-1">Custom pricing & terms for region-wide rights</p>
+            </div>
+
+            <ul class="mt-6 space-y-2 text-gray-600">
+              <li>Territory exclusivity (negotiable)</li>
+              <li>Dedicated account manager</li>
+              <li>Custom branding & menu R&D</li>
+              <li>Priority supply & logistics</li>
+            </ul>
+
+            <div class="mt-6 flex gap-3">
+              <button class="flex-1 py-3 rounded-lg bg-primary text-white">Request Details</button>
+              <button class="flex-1 py-3 rounded-lg border border-primary text-primary" onclick="openLightbox('https://images.unsplash.com/photo-1498654896293-37aacf113fd9?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=c1d6b3a2e7f4d5c6b8a9e0f1')">View Gallery</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUPPORT & TRAINING DETAILS -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl font-bold">Comprehensive Support</h2>
+            <p class="mt-4 text-gray-600">We make sure you are fully equipped to run a successful RedesCreation outlet. Our support is hands-on from day one.</p>
+
+            <ul class="mt-6 space-y-4">
+              <li class="flex gap-4">
+                <div class="h-12 w-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold">A</div>
+                <div>
+                  <h4 class="font-semibold">Operational Training</h4>
+                  <p class="text-sm text-gray-500">Kitchen operations, inventory, POS, and customer service training.</p>
+                </div>
+              </li>
+
+              <li class="flex gap-4">
+                <div class="h-12 w-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold">B</div>
+                <div>
+                  <h4 class="font-semibold">Marketing & Launch</h4>
+                  <p class="text-sm text-gray-500">Grand opening support, local marketing playbooks and digital campaigns.</p>
+                </div>
+              </li>
+
+              <li class="flex gap-4">
+                <div class="h-12 w-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold">C</div>
+                <div>
+                  <h4 class="font-semibold">Quality & Compliance</h4>
+                  <p class="text-sm text-gray-500">Food safety, hygiene audits and ongoing quality checks.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <img src="https://images.unsplash.com/photo-1546069901-eacef0df6022?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=8bd0b9b7f8c4f3c2d5a6a7d9f7c0a1d2" alt="training" class="rounded-2xl shadow-xl w-full object-cover" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUCCESS STORIES / GALLERY -->
+    <section class="py-16">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold">Success Stories</h2>
+          <p class="mt-2 text-gray-600">See how local franchise partners scaled with RedesCreation.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <article class="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=7b9f3f9b1f6f4e0a9f6e3ef69b9b7a1d" alt="success 1" class="w-full h-52 object-cover" />
+            <div class="p-6">
+              <h4 class="font-bold">Koramangala Outlet</h4>
+              <p class="text-sm text-gray-600 mt-2">Reached break-even in 10 months and now a top-performing store.</p>
+              <div class="mt-4">
+                <button class="px-4 py-2 bg-primary text-white rounded-lg" onclick="openLightbox('https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=7b9f3f9b1f6f4e0a9f6e3ef69b9b7a1d')">View Photos</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1546069901-eacef0df6022?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=8bd0b9b7f8c4f3c2d5a6a7d9f7c0a1d2" alt="success 2" class="w-full h-52 object-cover" />
+            <div class="p-6">
+              <h4 class="font-bold">Indiranagar Café</h4>
+              <p class="text-sm text-gray-600 mt-2">Strong evening footfall and regular corporate orders.</p>
+              <div class="mt-4">
+                <button class="px-4 py-2 bg-primary text-white rounded-lg" onclick="openLightbox('https://images.unsplash.com/photo-1546069901-eacef0df6022?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=8bd0b9b7f8c4f3c2d5a6a7d9f7c0a1d2')">View Photos</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=44b3c1d05a38b8b5a0b8dc8c8e2ff9a9" alt="success 3" class="w-full h-52 object-cover" />
+            <div class="p-6">
+              <h4 class="font-bold">Mall Kiosk</h4>
+              <p class="text-sm text-gray-600 mt-2">High volumes during weekends and steady weekday sales.</p>
+              <div class="mt-4">
+                <button class="px-4 py-2 bg-primary text-white rounded-lg" onclick="openLightbox('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=44b3c1d05a38b8b5a0b8dc8c8e2ff9a9')">View Photos</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS CAROUSEL -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl font-bold">Franchisee Reviews</h2>
+          <p class="mt-2 text-gray-600">Real owners share their experiences.</p>
+        </div>
+
+        <div class="relative">
+          <div id="franchiseTrack" class="overflow-hidden">
+            <div class="franchise-inner flex transition-transform duration-700">
+              <div class="w-full lg:w-1/3 p-4">
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                  <p class="text-gray-700">"The support team was there every step. Strong brand, great margins."</p>
+                  <div class="mt-4 flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&s=4523a5f3e7c4d9b0f6a2d4e9" alt="owner1" class="w-12 h-12 rounded-full object-cover"/>
+                    <div>
+                      <div class="font-semibold">Ramesh K.</div>
+                      <div class="text-xs text-gray-500">Owner — Koramangala</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-full lg:w-1/3 p-4">
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                  <p class="text-gray-700">"Training was excellent and we were open in 10 weeks. Menu resonated locally."</p>
+                  <div class="mt-4 flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&s=a1b2c3d4e5f6a7b8c9d0e1f2" alt="owner2" class="w-12 h-12 rounded-full object-cover"/>
+                    <div>
+                      <div class="font-semibold">Meera S.</div>
+                      <div class="text-xs text-gray-500">Owner — Jayanagar</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-full lg:w-1/3 p-4">
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                  <p class="text-gray-700">"Supply chain is reliable and margins are predictable. Highly recommend."</p>
+                  <div class="mt-4 flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3&s=4523a5f3e7c4d9b0f6a2d4e9" alt="owner3" class="w-12 h-12 rounded-full object-cover"/>
+                    <div>
+                      <div class="font-semibold">Ajay P.</div>
+                      <div class="text-xs text-gray-500">Owner — Whitefield</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="mt-6 flex justify-center gap-4">
+            <button id="prevFr" class="px-3 py-2 rounded-md bg-white shadow">Prev</button>
+            <button id="nextFr" class="px-3 py-2 rounded-md bg-primary text-white">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ (Extended) -->
+    <section class="py-16">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold">Franchise FAQs</h2>
+          <p class="mt-2 text-gray-600">Answers to common questions about investment, support and operations.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-4">
+            <div class="bg-white rounded-lg shadow">
+              <button class="w-full text-left px-6 py-4 faq-toggle" aria-expanded="false">
+                <span class="font-semibold">What is the initial investment required?</span>
+                <span class="text-gray-500">+</span>
+              </button>
+              <div class="faq-content px-6 pb-4 hidden text-gray-600">
+                Typical packages start from ₹9.5 Lakh for small kiosks, upwards based on location and package features. Exact quote provided after site review.
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow">
+              <button class="w-full text-left px-6 py-4 faq-toggle" aria-expanded="false">
+                <span class="font-semibold">How long until I can open?</span>
+                <span class="text-gray-500">+</span>
+              </button>
+              <div class="faq-content px-6 pb-4 hidden text-gray-600">
+                Typical timeline is 8-12 weeks from agreement to opening, depending on approvals, construction and equipment delivery.
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow">
+              <button class="w-full text-left px-6 py-4 faq-toggle" aria-expanded="false">
+                <span class="font-semibold">Do you provide training?</span>
+                <span class="text-gray-500">+</span>
+              </button>
+              <div class="faq-content px-6 pb-4 hidden text-gray-600">
+                Yes — comprehensive operational and culinary training is included with each package, plus ongoing refresher sessions.
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="bg-white rounded-lg shadow">
+              <button class="w-full text-left px-6 py-4 faq-toggle" aria-expanded="false">
+                <span class="font-semibold">Is territory exclusivity available?</span>
+                <span class="text-gray-500">+</span>
+              </button>
+              <div class="faq-content px-6 pb-4 hidden text-gray-600">
+                Exclusive territories are available in the Franchise Plus package and subject to negotiation based on market potential.
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow">
+              <button class="w-full text-left px-6 py-4 faq-toggle" aria-expanded="false">
+                <span class="font-semibold">What ongoing fees are there?</span>
+                <span class="text-gray-500">+</span>
+              </button>
+              <div class="faq-content px-6 pb-4 hidden text-gray-600">
+                Typical arrangements include a royalty percentage and marketing contribution. Exact terms are discussed during agreement.
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow">
+              <button class="w-full text-left px-6 py-4 faq-toggle" aria-expanded="false">
+                <span class="font-semibold">How are supplies handled?</span>
+                <span class="text-gray-500">+</span>
+              </button>
+              <div class="faq-content px-6 pb-4 hidden text-gray-600">
+                We offer centralized procurement with vetted suppliers to ensure consistent quality and cost efficiency.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM / ENQUIRY -->
+    <section id="contactForm" class="py-16 bg-white">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div>
+            <h2 class="text-3xl font-bold">Request Franchise Information</h2>
+            <p class="mt-2 text-gray-600">Fill this form and our franchise team will contact you within 48 hours.</p>
+
+            <form id="franchiseEnquiry" class="mt-6 space-y-4" aria-label="Franchise enquiry form">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input name="name" type="text" required placeholder="Full name" class="w-full border rounded-lg px-4 py-3" />
+                <input name="phone" type="tel" required placeholder="Phone" class="w-full border rounded-lg px-4 py-3" />
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input name="email" type="email" required placeholder="Email" class="w-full border rounded-lg px-4 py-3" />
+                <input name="city" type="text" placeholder="City (e.g., Bengaluru area)" class="w-full border rounded-lg px-4 py-3" />
+              </div>
+              <div>
+                <select name="package" class="w-full border rounded-lg px-4 py-3">
+                  <option value="">Select intended package</option>
+                  <option value="startup">Start-Up</option>
+                  <option value="growth">Growth</option>
+                  <option value="enterprise">Franchise Plus</option>
+                </select>
+              </div>
+              <div>
+                <textarea name="message" rows="5" placeholder="Tell us about your interest / preferred location" class="w-full border rounded-lg px-4 py-3"></textarea>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <button type="submit" class="bg-primary text-white px-6 py-3 rounded-lg">Submit Enquiry</button>
+                <div id="enquiryStatus" class="text-sm text-gray-600"></div>
+              </div>
+            </form>
+
+            <div class="mt-8">
+              <h4 class="font-semibold">Contact</h4>
+              <p class="text-gray-600 mt-2">Phone: <a class="text-primary" href="tel:+919676659153">+91 96766 59153</a></p>
+              <p class="text-gray-600">Email: <a class="text-primary" href="mailto:info@redescreation.in">info@redescreation.in</a></p>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold">Find Us (Bengaluru)</h4>
+            <div class="mt-4 rounded-lg overflow-hidden border">
+              <iframe title="RedesCreation location in Bengaluru" src="https://www.google.com/maps?q=Bengaluru&output=embed" width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+            <div class="mt-6 bg-card rounded-lg p-6 shadow">
+              <h5 class="font-bold">Quick FAQ</h5>
+              <p class="text-sm text-gray-600 mt-2">Prefer a call? Let us know a good time and we'll arrange a direct consultation with our franchise head.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="py-12 bg-primary text-white">
+      <div class="max-w-6x1 mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <h3 class="text-2xl font-bold">Ready to open a RedesCreation outlet?</h3>
+          <p class="mt-2 text-gray-100">Speak with our franchise team today and explore the right package for you.</p>
+        </div>
+        <div class="flex gap-4">
+          <a href="#contactForm" class="bg-accent text-dark font-bold px-6 py-3 rounded-lg">Request a Call</a>
+          <a href="#packages" class="bg-white text-primary px-6 py-3 rounded-lg">View Packages</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================== -->
+  <!-- Footer -->
+  <!-- ===================================================== -->
+  <footer class="bg-red-800 text-white py-12">
+    <div class="container mx-auto grid md:grid-cols-4 gap-8 px-6">
+      <div>
+        <h3 class="font-bold text-xl mb-4">Xabite</h3>
+        <p class="text-gray-300">Serving love and flavor across Bengaluru with multiple outlets.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Quick Links</h4>
+        <ul class="space-y-2 text-gray-300">
+          <li><a href="index.html" class="hover:underline">Home</a></li>
+          <li><a href="about.html" class="hover:underline">About</a></li>
+          <li><a href="menu.html" class="hover:underline">Menu</a></li>
+          <li><a href="Blog.html" class="hover:underline">Blog</a></li>
+          <li><a href="locations.html" class="hover:underline">Locations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Contact</h4>
+        <p class="text-gray-300">Bengaluru, India</p>
+        <p class="text-gray-300">+91 9876543210</p>
+        <p class="text-gray-300">info@xabite.com</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Follow Us</h4>
+        <div class="flex space-x-4">
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-6 h-6"></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" class="w-6 h-6"></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" class="w-6 h-6"></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-gray-400 mt-8">© 2025 Xabite. All rights reserved.</div>
+  </footer>
+
+  <!-- SCRIPTS: Interactive features + animations -->
+  <script>
+    // Utility: select helpers
+    const $ = (s, ctx=document) => ctx.querySelector(s);
+    const $$ = (s, ctx=document) => Array.from(ctx.querySelectorAll(s));
+
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    // Lightbox implementation
+    const lightbox = $('#lightbox');
+    const lightboxImg = $('#lightboxImg');
+    const lightboxClose = $('#lightboxClose');
+
+    function openLightbox(url) {
+      lightboxImg.src = url;
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightboxFn() {
+      lightbox.classList.remove('open');
+      lightboxImg.src = '';
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    lightboxClose.addEventListener('click', closeLightboxFn);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightboxFn();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightboxFn();
+    });
+
+    // FAQ accordion toggles
+    $$('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panel = btn.nextElementSibling;
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        if (expanded) {
+          panel.style.display = 'none';
+          btn.querySelector('span') && (btn.querySelector('span').textContent = '+');
+        } else {
+          panel.style.display = 'block';
+          btn.querySelector('span') && (btn.querySelector('span').textContent = '-');
+        }
+      });
+    });
+
+    // Franchise testimonial carousel (prev/next)
+    const track = document.querySelector('.franchise-inner');
+    const prevFr = $('#prevFr');
+    const nextFr = $('#nextFr');
+    let frIndex = 0;
+    const frTotal = track ? track.children.length / 1 : 0;
+
+    function updateFrCarousel() {
+      const w = track.children[0].offsetWidth;
+      // show one at a time on small screens, or shift by third on large screens
+      let translate = 0;
+      if (window.innerWidth >= 1024) {
+        // show 3 columns; clamp index
+        const maxIndex = Math.max(0, Math.ceil(frTotal) - 3);
+        frIndex = Math.min(frIndex, maxIndex);
+        translate = frIndex * (w);
+      } else {
+        frIndex = Math.max(0, Math.min(frIndex, frTotal - 1));
+        translate = frIndex * (w);
+      }
+      track.style.transform = `translateX(-${translate}px)`;
+    }
+
+    prevFr && prevFr.addEventListener('click', () => {
+      frIndex = Math.max(0, frIndex - 1);
+      updateFrCarousel();
+    });
+    nextFr && nextFr.addEventListener('click', () => {
+      frIndex = Math.min(frIndex + 1, Math.max(0, frTotal - 1));
+      updateFrCarousel();
+    });
+    window.addEventListener('resize', updateFrCarousel);
+    // Auto-rotate small carousel
+    setInterval(() => {
+      frIndex = (frIndex + 1) % Math.max(1, frTotal);
+      updateFrCarousel();
+    }, 6000);
+
+    // Enquiry form submission (demo)
+    const enquiryForm = $('#franchiseEnquiry');
+    const enquiryStatus = $('#enquiryStatus');
+    if (enquiryForm) {
+      enquiryForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        enquiryStatus.textContent = 'Submitting...';
+        // simulate async
+        setTimeout(() => {
+          enquiryStatus.textContent = 'Thanks! Our franchise team will contact you within 48 hours.';
+          enquiryForm.reset();
+        }, 900);
+      });
+    }
+
+    // Testimonials track auto (small)
+    const franchiseTrackEl = $('#franchiseTrack');
+    window.addEventListener('load', () => {
+      updateFrCarousel();
+    });
+
+    // small reveal animations for elements when scrolled into view
+    const revealEls = $$('.fade-in, .slide-in, .slideInLeft, .slide-up');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100');
+          entry.target.style.transform = 'none';
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealEls.forEach(el => {
+      el.classList.add('opacity-0');
+      revealObserver.observe(el);
+    });
+
+    // set copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Accessibility: trap focus to mobile nav when open (simple)
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Tab' && mobileNav.classList.contains('open')) {
+        setTimeout(() => {
+          if (!mobileNav.contains(document.activeElement)) {
+            mobileClose.focus();
+          }
+        }, 10);
+      }
+    });
+
+    // small helper: attach openLightbox to global so inline events can call it
+    window.openLightbox = openLightbox;
+
+  </script>
+</body>
+</html>

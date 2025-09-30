@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Xabite Restaurant</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+  <style>
+    /* Custom Animations */
+    .fade-in {
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .slide-up {
+      animation: slideUp 1.2s ease-in-out;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .zoom-in {
+      animation: zoomIn 1s ease-in-out;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-900">
+
+  <!-- ===================================================== -->
+  <!-- Navbar -->
+  <!-- ===================================================== -->
+  <header class="bg-red-700 text-white sticky top-0 z-50 shadow-md">
+    <div class="container mx-auto flex items-center justify-between py-4 px-6">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center space-x-2">
+        <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="logo" class="w-10 h-10">
+        <span class="font-bold text-2xl">Xabite</span>
+      </a>
+      <!-- Nav Links -->
+      <nav class="hidden md:flex space-x-8 font-medium">
+        <a href="index.html" class="hover:text-yellow-400 transition">Home</a>
+        <a href="about.html" class="hover:text-yellow-400 transition">About Us</a>
+        <a href="Franchise-Model.html" class="hover:text-yellow-400 transition">Franchise Model</a>
+        <a href="Blog.html" class="hover:text-yellow-400 transition">Blog</a>
+        <a href="locations.html" class="hover:text-yellow-400 transition">Locations</a>
+        <a href="contact.html" class="text-yellow-400">Contact Us</a>
+      </nav>
+      <!-- CTA -->
+      <a href="#" class="hidden md:block bg-yellow-500 hover:bg-yellow-600 text-red-700 px-4 py-2 rounded-lg font-semibold">Reservation Now</a>
+      <!-- Mobile Menu -->
+      <button id="menu-btn" class="md:hidden focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Links -->
+    <div id="mobile-menu" class="hidden md:hidden bg-red-600 px-6 pb-4">
+      <a href="index.html" class="block py-2">Home</a>
+      <a href="about.html" class="block py-2">About Us</a>
+      <a href="Franchise-Model.html" class="block py-2">Franchise Model</a>
+      <a href="Blog.html" class="block py-2">Blog</a>
+      <a href="locations.html" class="block py-2">Locations</a>
+      <a href="contact.html" class="block py-2">Contact Us</a>
+    </div>
+  </header>
+  <!-- ================= HERO SECTION ================= -->
+  <section class="relative h-[500px] flex items-center justify-center bg-cover bg-center mt-16" style="background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="relative text-center text-white fade-in">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">About Xabite</h1>
+      <p class="max-w-2xl mx-auto text-lg">Serving happiness on a plate since 2010, with the best burgers, sandwiches, and smiles in Bengaluru.</p>
+    </div>
+  </section>
+
+  <!-- ================= OUR STORY ================= -->
+  <section class="max-w-7xl mx-auto py-20 px-6 grid md:grid-cols-2 gap-12 items-center">
+    <div class="slide-up">
+      <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Our Story" class="rounded-2xl shadow-lg" />
+    </div>
+    <div class="fade-in">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Story</h2>
+      <p class="text-lg text-gray-600 mb-4">Founded in the heart of Bengaluru, Xabite has grown from a small burger joint into a beloved franchise across the city. We focus on fresh ingredients, bold flavors, and a welcoming experience for all our guests.</p>
+      <p class="text-lg text-gray-600 mb-6">Our chefs craft every dish with passion and creativity, ensuring that every bite is a moment to remember. Whether it’s a quick snack or a family gathering, we bring joy to your table.</p>
+      <a href="menu.html" class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg transition">Explore Our Menu</a>
+    </div>
+  </section>
+
+  <!-- ================= WHY CHOOSE US ================= -->
+  <section class="bg-gray-100 py-20">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12">Why Choose Us?</h2>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="p-8 bg-white rounded-2xl shadow hover:shadow-xl transition transform hover:-translate-y-2 zoom-in">
+          <i class="fas fa-burger text-5xl text-red-500 mb-6"></i>
+          <h3 class="text-xl font-semibold mb-4">Fresh Ingredients</h3>
+          <p class="text-gray-600">We believe great food starts with the best ingredients sourced daily for freshness.</p>
+        </div>
+        <div class="p-8 bg-white rounded-2xl shadow hover:shadow-xl transition transform hover:-translate-y-2 zoom-in">
+          <i class="fas fa-star text-5xl text-yellow-500 mb-6"></i>
+          <h3 class="text-xl font-semibold mb-4">Top Rated</h3>
+          <p class="text-gray-600">Our customers love us! Rated among the best burger restaurants in Bengaluru.</p>
+        </div>
+        <div class="p-8 bg-white rounded-2xl shadow hover:shadow-xl transition transform hover:-translate-y-2 zoom-in">
+          <i class="fas fa-truck text-5xl text-green-500 mb-6"></i>
+          <h3 class="text-xl font-semibold mb-4">Fast Delivery</h3>
+          <p class="text-gray-600">Delicious food delivered hot and fresh right to your doorstep, every time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COUNTERS ================= -->
+  <section class="max-w-7xl mx-auto py-20 px-6 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-12">Our Impact</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
+      <div>
+        <h3 class="text-4xl font-bold text-red-500 counter" data-target="5000">0</h3>
+        <p class="mt-2 text-gray-600">Happy Customers</p>
+      </div>
+      <div>
+        <h3 class="text-4xl font-bold text-red-500 counter" data-target="120">0</h3>
+        <p class="mt-2 text-gray-600">Team Members</p>
+      </div>
+      <div>
+        <h3 class="text-4xl font-bold text-red-500 counter" data-target="15">0</h3>
+        <p class="mt-2 text-gray-600">Branches</p>
+      </div>
+      <div>
+        <h3 class="text-4xl font-bold text-red-500 counter" data-target="250">0</h3>
+        <p class="mt-2 text-gray-600">Menu Items</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TEAM ================= -->
+  <section class="bg-gray-100 py-20">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12">Meet Our Team</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+        <div class="bg-white rounded-2xl shadow hover:shadow-xl p-6 transition transform hover:-translate-y-2 fade-in">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chef" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+          <h3 class="text-xl font-semibold">Rajesh Kumar</h3>
+          <p class="text-gray-600">Head Chef</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow hover:shadow-xl p-6 transition transform hover:-translate-y-2 fade-in">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chef" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+          <h3 class="text-xl font-semibold">Anita Sharma</h3>
+          <p class="text-gray-600">Pastry Chef</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow hover:shadow-xl p-6 transition transform hover:-translate-y-2 fade-in">
+          <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Manager" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+          <h3 class="text-xl font-semibold">Rohit Singh</h3>
+          <p class="text-gray-600">Restaurant Manager</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow hover:shadow-xl p-6 transition transform hover:-translate-y-2 fade-in">
+          <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Waiter" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+          <h3 class="text-xl font-semibold">Priya Verma</h3>
+          <p class="text-gray-600">Senior Waitress</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12">What Our Customers Say</h2>
+      <div class="relative max-w-3xl mx-auto">
+        <div id="testimonial-slider" class="overflow-hidden">
+          <div class="whitespace-nowrap transition-all duration-700" id="testimonial-track">
+            <div class="inline-block w-full px-6">
+              <p class="text-lg italic text-gray-700">“Best burger in town! Always fresh and super tasty. Highly recommend.”</p>
+              <h4 class="mt-4 font-semibold">- Sanjay Rao</h4>
+            </div>
+            <div class="inline-block w-full px-6">
+              <p class="text-lg italic text-gray-700">“Love the ambience and friendly staff. Perfect place for a quick meal.”</p>
+              <h4 class="mt-4 font-semibold">- Meena Sharma</h4>
+            </div>
+            <div class="inline-block w-full px-6">
+              <p class="text-lg italic text-gray-700">“The sandwiches are absolutely amazing. Xabite never disappoints.”</p>
+              <h4 class="mt-4 font-semibold">- Arjun Patel</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="bg-gray-100 py-20">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <div class="bg-white rounded-lg shadow">
+          <button class="w-full text-left px-6 py-4 font-semibold flex justify-between items-center faq-btn">What are your opening hours? <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-content px-6 pb-4 hidden text-gray-600">We are open from 10 AM to 11 PM every day, including weekends.</div>
+        </div>
+        <div class="bg-white rounded-lg shadow">
+          <button class="w-full text-left px-6 py-4 font-semibold flex justify-between items-center faq-btn">Do you offer delivery? <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-content px-6 pb-4 hidden text-gray-600">Yes, we deliver across Bengaluru through our app and partners.</div>
+        </div>
+        <div class="bg-white rounded-lg shadow">
+          <button class="w-full text-left px-6 py-4 font-semibold flex justify-between items-center faq-btn">Are reservations required? <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-content px-6 pb-4 hidden text-gray-600">Reservations are recommended on weekends but not required.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="py-20 text-center bg-red-500 text-white">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6">Hungry Already?</h2>
+    <p class="mb-6">Book your table today and enjoy the best burgers in Bengaluru!</p>
+    <a href="contact.html" class="bg-white text-red-500 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Reserve Now</a>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- Footer -->
+  <!-- ===================================================== -->
+  <footer class="bg-red-800 text-white py-12">
+    <div class="container mx-auto grid md:grid-cols-4 gap-8 px-6">
+      <div>
+        <h3 class="font-bold text-xl mb-4">Xabite</h3>
+        <p class="text-gray-300">Serving love and flavor across Bengaluru with multiple outlets.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Quick Links</h4>
+        <ul class="space-y-2 text-gray-300">
+          <li><a href="index.html" class="hover:underline">Home</a></li>
+          <li><a href="about.html" class="hover:underline">About</a></li>
+          <li><a href="menu.html" class="hover:underline">Menu</a></li>
+          <li><a href="Blog.html" class="hover:underline">Blog</a></li>
+          <li><a href="locations.html" class="hover:underline">Locations</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Contact</h4>
+        <p class="text-gray-300">Bengaluru, India</p>
+        <p class="text-gray-300">+91 9876543210</p>
+        <p class="text-gray-300">info@xabite.com</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Follow Us</h4>
+        <div class="flex space-x-4">
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="w-6 h-6"></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" class="w-6 h-6"></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" class="w-6 h-6"></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-gray-400 mt-8">© 2025 Xabite. All rights reserved.</div>
+  </footer>
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+     // Mobile Menu Toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Counter animation
+    const counters = document.querySelectorAll('.counter');
+    const speed = 200;
+    counters.forEach(counter => {
+      const animate = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = target / speed;
+        if(count < target){
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(animate, 20);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      animate();
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        content.classList.toggle('hidden');
+      });
+    });
+
+    // Testimonials carousel
+    const track = document.getElementById('testimonial-track');
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % 3;
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }, 4000);
+  </script>
+</body>
+</html>
